@@ -1,6 +1,6 @@
 variable "azure_subscription_id" {
     type            = string
-    default         = "e2ea9f8d-8817-41cc-97e1-c02f76"
+    default         = "3584afbf-1dc4-498b-b710-983d1d1673c9"
 }
 
 # actually it is pretty easy to find if you know what to look for.
@@ -8,22 +8,22 @@ variable "azure_subscription_id" {
 # https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties 
 variable "azure_tenant_id" {
     type            = string
-    default         = "28fab7b7-ef28-40a5-b984-a331"
+    default         = "d6397071-8e3e-45d2-a2d6-36698acf0fea"
 }
 # https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/5c619ed2-952d-4cbc-822a-34cc7056a411/adminUnitObjectId/
 variable "azure_client_id" {
     type            = string
-    default         = "26be248c-80aa-4711-ab99-e667"
+    default         = "cebedcd3-726e-4139-9d19-67feebddfed9"
 }
 
-variable "org-service-url" {
+variable "org_service_url" {
     type            = string
-    default         = "https://espinosa.visualstudio.com/"
+    default         = "https://dev.azure.com/luismiguelfernandez0391"
 }
 
 variable "pat" {
     type            = string
-    default         = "upmnkz4whqdf2jqxdpnpfwwalhkiei3ch5uitbwq"
+    default         = "6mpy65co2du7gipxlrnvlymfadplbotbtsvzpd36xpck5v3tr5uq"
 }
 
 variable "Project-Name" {
@@ -40,3 +40,6 @@ variable "azure_location" {
     type            = string
     default         = "West Europe"
 }
+
+#terraform secret.
+#Bu_U~IZnl~4Hk3J83V0qWr2lGM_coA0z.9

@@ -13,8 +13,8 @@ resource "null_resource" "release-pipe-pro" {
     #}
 
     provisioner "local-exec" {
-        command = "echo upmnkz4whqdf2jqxdpnpfwwalhkiei3clnrcxwh4qx26h5uitbwq | az devops login && az devops configure --defaults organization=https://dev.azure.com/lmfespinosaingeniero && az pipelines release create --definition-name=pipeline-release  --project=${azuredevops_project.project.id} --org=https://dev.azure.com/lmfespinosaingeniero "
-        #command = "echo Create Release Pipeline"
+        #command = "echo upmnkz4whqdf2jqxdpnpfwwalhkiei3clnrcxwh4qx26h5uitbwq | az devops login && az devops configure --defaults organization=https://dev.azure.com/lmfespinosaingeniero && az pipelines release create --definition-name=pipeline-release  --project=${azuredevops_project.project.id} --org=https://dev.azure.com/lmfespinosaingeniero "
+        command = "echo Create Release Pipeline"
     }
 
     depends_on = [azuredevops_build_definition.build-prod]

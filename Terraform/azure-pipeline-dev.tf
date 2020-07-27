@@ -11,7 +11,7 @@ resource "azuredevops_build_definition" "build-dev" {
     repo_type   = "TfsGit"
     repo_id     = azuredevops_git_repository.repository.id
     branch_name = azuredevops_git_repository.repository.default_branch
-    yml_path    = "azure-pipelines.yml"
+    yml_path    = "terraform-pipeline.yml"
   }
 
   variable_groups = [
@@ -46,9 +46,11 @@ resource "null_resource" "execute-pipe-dev" {
     #}
 
     provisioner "local-exec" {
-        command = "echo upmnkz4whqdf2jqxdpnpfwwalhkiei3clnrcxwh4qx26h5uitbwq | az devops login && az devops configure --defaults organization=https://dev.azure.com/lmfespinosaingeniero && az pipelines run   --project=${azuredevops_project.project.id} --name=Terraform-CI-CD-dev --org=https://dev.azure.com/lmfespinosaingeniero "
+        command = "echo ${var.pat} | az devops login && az devops configure --defaults organization=${var.org_service_url} && az pipelines run --project=${azuredevops_project.project.id} --name=Terraform-CI-CD-dev --org=${var.org_service_url}/"
         
     }
 
     depends_on = [azuredevops_build_definition.build-dev]
 }
+
+##az extension add --name azure-devops
