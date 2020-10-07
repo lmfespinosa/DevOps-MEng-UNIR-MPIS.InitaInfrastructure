@@ -13,7 +13,7 @@ variable "azure_tenant_id" {
 # https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/5c619ed2-952d-4cbc-822a-34cc7056a411/adminUnitObjectId/
 variable "azure_client_id" {
     type            = string
-    default         = "cebedcd3-726e-4139-9d19-67feebddfed9"
+    default         = "ef97caa6-9d7f-4cb7-aa48-a9bd550140c8" #"cebedcd3-726e-4139-9d19-67feebddfed9"
 }
 
 variable "org_service_url" {
@@ -21,9 +21,29 @@ variable "org_service_url" {
     default         = "https://dev.azure.com/luismiguelfernandez0391"
 }
 
-variable "pat" {
+variable "org_service_url_path" {
+    type            = string
+    default         = "https://dev.azure.com/luismiguelfernandez0391"
+}
+
+variable "pat_devops" {
     type            = string
     default         = "6mpy65co2du7gipxlrnvlymfadplbotbtsvzpd36xpck5v3tr5uq"
+}
+
+variable "pat_portal" {
+    type            = string
+    default         = "Uy.He4W7zuEB5VgDKmPzIC__.-0jZP8I4T" #"Bu_U~IZnl~4Hk3J83V0qWr2lGM_coA0z.9"
+}
+
+variable "org_user"{
+    type = string
+    default = "luismiguelfernandez0391"
+}
+
+variable "feed" {
+    type            = string
+    default         = "luismiguelfernandez0391"
 }
 
 variable "Project-Name" {

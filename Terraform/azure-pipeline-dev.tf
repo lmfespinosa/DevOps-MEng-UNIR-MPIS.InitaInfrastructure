@@ -1,6 +1,6 @@
 resource "azuredevops_build_definition" "build-dev" {
   project_id = azuredevops_project.project.id
-  name       = "Terraform-CI-CD-dev"
+  name       = "Terraform-DevOps"
   path       = "\\Pipelines-Dev"
 
   ci_trigger {
@@ -19,20 +19,64 @@ resource "azuredevops_build_definition" "build-dev" {
   ]
 
   variable {
-    name  = "PipelineVariable"
-    value = "Go Microsoft!"
+    name  = "azuresubscriptionid"
+    value = "$(AZURE_SUSCRIPTION_ID)"
+    is_secret = false
   }
 
   variable {
-    name      = "PipelineSecret"
-    secret_value     = "ZGV2cw"
-    is_secret = true
+    name      = "azuretenantid"
+    value     = "$(AZURE_TENANT_ID)"
+    is_secret = false
   }
-}
 
+  variable {
+    name      = "terraformclientid"
+    value     = "$(AZURE_CLIENT_ID)"
+    is_secret = false
+  }
+
+  variable {
+    name      = "terraformclientsecret"
+    value     = "$(PAT_PORTAL)"
+    is_secret = false
+  }
+
+  variable {
+    name      = "orgserviceurl"
+    value     = "$(ORG_SERVICE_URL)"
+    is_secret = false
+  }
+
+  variable {
+    name      = "personalaccesstoken"
+    value     = "$(PAT_DEVOPS)"
+    is_secret = false
+  }
+
+  variable {
+    name      = "devopsprojectname"
+    value     = "$(DEVOPS_PROJECT_NAME)"
+    is_secret = false
+  }
+
+  variable {
+    name      = "orgserviceurl"
+    value     = "$(ORG_SERVICE_URL)"
+    is_secret = false
+  }
+
+  variable {
+    name      = "orguser"
+    value     = "$(ORG_USER)"
+    is_secret = false
+  }
+
+}
 
 resource "null_resource" "execute-pipe-dev" {
 
+#az account set --subscription "Company Subscription"
     #connection {
     #    type = "ssh"
     #    user = "azureuser"
@@ -46,7 +90,7 @@ resource "null_resource" "execute-pipe-dev" {
     #}
 
     provisioner "local-exec" {
-        command = "echo ${var.pat} | az devops login && az devops configure --defaults organization=${var.org_service_url} && az pipelines run --project=${azuredevops_project.project.id} --name=Terraform-CI-CD-dev --org=${var.org_service_url}/"
+        command = "echo ${var.pat_devops} | az devops login && az devops configure --defaults organization=${var.org_service_url} && az pipelines run --project=${azuredevops_project.project.id} --name=Terraform-DevOps --org=${var.org_service_url}/"
         
     }
 
